@@ -15,11 +15,12 @@ class CreateInvestorsTable extends Migration
     {
         Schema::create('investors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('nama_usaha')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->string('no_hp');
+            $table->string('norek')->nullable();
             $table->string('image')->nullable();
             $table->text('alamat')->nullable();
+            $table->string('fotoKTP')->nullable();
             $table->timestamps();
         });
     }

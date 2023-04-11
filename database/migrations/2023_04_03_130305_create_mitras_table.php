@@ -15,11 +15,13 @@ class CreateMitrasTable extends Migration
     {
         Schema::create('mitras', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('nama_usaha')->nullable();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('nama_usaha');
             $table->string('no_hp');
             $table->string('image')->nullable();
             $table->text('alamat')->nullable();
+            $table->string('norek')->nullable();
+            $table->string('fotoKTP')->nullable();
             $table->enum('status', ['active', 'pending'])->default('pending');
             $table->timestamps();
         });

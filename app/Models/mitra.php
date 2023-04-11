@@ -10,17 +10,12 @@ class mitra extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'nama_usaha',
-        'imagem',
-        'no_hp',
-        'alamat',
-        'status'
+    protected $guarded = [
+        'id'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'id');
     }
 }
