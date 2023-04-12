@@ -20,7 +20,7 @@ class MitraController extends Controller
         return view('mitra.dashboard',[
             "title" => "Mitra Dasboard",
             "nama" => mitra::where('user_id', auth()->user()->id)->first(),
-            'head' => User::all()
+            'head' => User::find(auth()->user()->id),
         ]);
     }
 
