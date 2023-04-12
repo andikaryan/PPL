@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role', 
+        'role',
     ];
 
     /**
@@ -42,6 +42,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
     public function mitra()
     {
         return $this->hasMany(mitra::class);
@@ -49,10 +51,5 @@ class User extends Authenticatable
     public function admin()
     {
         return $this->hasMany(admin::class);
-    }
-
-    public function blog()
-    {
-        return $this->hasMany(blog::class);
     }
 }

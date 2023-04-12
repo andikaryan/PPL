@@ -21,7 +21,9 @@ Route::get('/m/dashboard',[MitraController::class,'index'])->middleware('auth');
 Route::get('/m/blog/checkSlug',[MitraBlogController::class,'checkSlug'])->middleware('mitra');
 Route::resource('/m/blog', MitraBlogController::class)->middleware('mitra');
 Route::get('/m/register',[RegisterController::class,'mitra'])->middleware('guest');
+Route::get('/i/register',[RegisterController::class,'Investor'])->middleware('guest');
 Route::post('/m/register',[RegisterController::class,'regisMitra']);
+Route::post('/i/register',[RegisterController::class,'regisInvestor']);
 
 Route::resource('/investor', InvestorController::class);
 

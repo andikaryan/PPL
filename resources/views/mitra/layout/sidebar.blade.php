@@ -1,5 +1,6 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
     <div class="position-sticky pt-3 sidebar-sticky">
+    @can('mitra')
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> <span>Mitra</span></h6>
       <ul class="nav flex-column">
         <li class="nav-item">
@@ -15,6 +16,8 @@
           </a>
         </li>  
       </ul>
+      @endcan
+      
       @can('admin')
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> <span>Admin</span></h6>
       <ul class="nav flex-column">

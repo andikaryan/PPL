@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\blog;
+use App\Models\mitra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -18,9 +19,11 @@ class MitraBlogController extends Controller
     public function index()
     {
 
+        $mitra = mitra::where('user_id',auth()->user()->id)->first();
+        $id = $mitra->id;
         return view('mitra.blog.blogs', [
             "title" => "Blog Saya",
-            'posts' => blog::where('user_id', auth()->user()->id)->get()
+            'posts' => blog::where('user_id', $id)->get()
         ]);
     }
 
@@ -44,8 +47,9 @@ class MitraBlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // return $request->file('image')->store('post-image');
+    {   
+ 
+        
         $validatedData = $request->validate([
             'judul' => 'required|max:255',
             'slug' => 'required|unique:blogs',
@@ -62,9 +66,9 @@ class MitraBlogController extends Controller
         //     'excerpt' => Str::limit(strip_tags($request->body, 200)),
         //     'body' => $request->body
         // ];
-
+            $user = mitra::where('user_id', auth()->user()->id)->first();
         blog::create([
-            'user_id' => auth()->user()->id,
+            'user_id' => $user->id,
             'judul' => $request->judul,
             'slug' => $request->slug,
             'excerpt' => Str::limit(strip_tags($request->body, 200)),
@@ -126,8 +130,9 @@ class MitraBlogController extends Controller
                 Storage::delete($request->oldImage);
             }
         }
+        $user = mitra::where('user_id', auth()->user()->id)->first();
         $validatedData = $request->validate($rules);
-        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['user_id'] = $user->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body, 200));
         $validatedData['image'] = $request->file('image')->store('post-image');
         blog::Where('id', $blog->id)

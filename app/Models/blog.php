@@ -19,9 +19,10 @@ class blog extends Model
         'body',
 
     ];
-    public function user()
+    
+    public function mitra()
     {
-        return $this->belongsTo(User::class,'id');
+        return $this->belongsTo(mitra::class,'id');
     }
     public function getRouteKeyName()
     {
