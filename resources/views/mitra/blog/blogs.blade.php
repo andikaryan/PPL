@@ -12,10 +12,7 @@
 @endif
 <div class="table-responsive col-lg-9">
   <a href="/m/blog/create" class="btn btn-success mb-3"><span data-feather="plus" class="mb-1"></span> Blog Baru</a>
-  @if ($posts)
-  <div class="position-absolute top-50 start-50 translate-middle"><h3 class="text-muted">Belum ada Blog</h3></div>
-      
-  @else
+  @if (count($posts)>0)
   <table class="table table-striped table-sm">
     <thead>
       <tr>
@@ -47,6 +44,9 @@
       
     </tbody>
   </table>
+  @else
+  <div class="position-absolute top-50 start-50 translate-middle"><h3 class="text-muted">Belum ada Blog</h3></div>
+  
   @endif
     
   </div>

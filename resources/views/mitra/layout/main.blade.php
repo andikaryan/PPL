@@ -12,7 +12,7 @@
 {{-- <meta name="csrf-token" content="{{ csrf_token() }}"/> --}}
     
 
-  {{-- <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script> --}}
+  <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
     
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
