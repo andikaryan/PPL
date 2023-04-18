@@ -37,7 +37,7 @@
       @else
       <img class="img-preview img-fluid mb-3 col-sm-5" alt="">
       @endif
-      <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" required onchange="previewImage()">
+      <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
       @error('image')
       <div class="invalid-feedback">
         {{ $message }}
@@ -52,7 +52,7 @@
       <p class="text-danger">{{ $message }}</p>
       @enderror
     </div>
-    <button type="submit" class="btn btn-primary mb-3">Edit</button>
+    <button type="submit" class="btn btn-primary mb-3">Simpan</button>
     <a href="/m/blog" class="btn btn-danger mb-3">Kembali</a>
   </form>
 </div>

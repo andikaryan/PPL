@@ -22,7 +22,7 @@ class blog extends Model
     
     public function mitra()
     {
-        return $this->belongsTo(mitra::class,'id');
+        return $this->belongsTo(mitra::class,'user_id');
     }
     public function getRouteKeyName()
     {

@@ -6,10 +6,12 @@
     <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-      <form action="/logout" method="post">
+      {{-- <form action="/logout" method="post">
           @csrf
-          <button type="submit" class="nav-link px-3"> <i class="bi bi-box-arrow-right">Keluar <span data-feather="log-out"></span>   </i></button>
-        </form>
+          <button type="submit" class="nav-link px-3">Keluar <span data-feather="log-out"></span></button>
+        </form> --}}
+        
         </div>
       </div>
+      
   </header>
