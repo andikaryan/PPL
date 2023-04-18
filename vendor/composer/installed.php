@@ -19,6 +19,15 @@
             'reference' => '73e5b88775c64ccc0b84fb60836b30dc9d92ac4a',
             'dev_requirement' => false,
         ),
+        'azishapidin/indoregion' => array(
+            'pretty_version' => '3.0.3',
+            'version' => '3.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../azishapidin/indoregion',
+            'aliases' => array(),
+            'reference' => '95874c8b89ae8216fad11ec0f8e81de544331ded',
+            'dev_requirement' => false,
+        ),
         'brick/math' => array(
             'pretty_version' => '0.9.3',
             'version' => '0.9.3.0',
@@ -493,6 +502,15 @@
             'reference' => 'ff6248ea87a9f116e78edd6002e39e5128a0d4dd',
             'dev_requirement' => false,
         ),
+        'livewire/livewire' => array(
+            'pretty_version' => 'v2.12.3',
+            'version' => '2.12.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../livewire/livewire',
+            'aliases' => array(),
+            'reference' => '019b1e69d8cd8c7e749eba7a38e4fa69ecbc8f74',
+            'dev_requirement' => false,
+        ),
         'mockery/mockery' => array(
             'pretty_version' => '1.5.1',
             'version' => '1.5.1.0',
@@ -578,6 +596,15 @@
             'install_path' => __DIR__ . '/../opis/closure',
             'aliases' => array(),
             'reference' => '3d81e4309d2a927abbe66df935f4bb60082805ad',
+            'dev_requirement' => false,
+        ),
+        'parsecsv/php-parsecsv' => array(
+            'pretty_version' => '1.3.2',
+            'version' => '1.3.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../parsecsv/php-parsecsv',
+            'aliases' => array(),
+            'reference' => '2d6236cae09133e0533d34ed45ba1e1ecafffebb',
             'dev_requirement' => false,
         ),
         'phar-io/manifest' => array(

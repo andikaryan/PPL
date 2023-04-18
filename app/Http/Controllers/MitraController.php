@@ -16,9 +16,9 @@ class MitraController extends Controller
      */
     public function index()
     {
-        
+        $judul = User::find(auth()->user()->id);
         return view('mitra.dashboard',[
-            "title" => "Mitra Dasboard",
+            "title" => $judul->role,
             "nama" => mitra::where('user_id', auth()->user()->id)->first(),
             'head' => User::find(auth()->user()->id),
         ]);

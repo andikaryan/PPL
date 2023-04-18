@@ -15,7 +15,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        return view('investor.blog.blog', [
+            "title" => "Blog Saya",
+            'blog' => blog::all()
+        ]);
     }
 
     /**
@@ -45,9 +48,13 @@ class BlogController extends Controller
      * @param  \App\Models\blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(blog $blog)
-    {
-        //
+    public function show($id)
+    {   
+        $blog = blog::where('id', $id)->first();
+        return view('investor.blog.show', [
+            'blog' => $blog,
+            'title' => $blog->judul,
+        ]);
     }
 
     /**
