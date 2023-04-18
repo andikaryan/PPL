@@ -97,7 +97,7 @@ class AdminAkunController extends Controller
         User::Where('id', $user->id)
             ->update($validatedData);;
 
-        return redirect('/a/akun')->with('success', 'Berhasil mengubah akun!');
+        return redirect('/a/akun')->with('success', 'Berhasil mengedit akun!');
     }
 
     /**

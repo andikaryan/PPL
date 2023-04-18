@@ -70,6 +70,7 @@
                 </div>
               </div>
               <hr>
+              @if ($investor->province_id)
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Provinsi</p>
@@ -106,6 +107,45 @@
                 </div>
               </div>
               <hr>
+              @else
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Provinsi</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">-</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Kabupaten</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">-</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Kecamatan</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">-</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Desa</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">-</p>
+                </div>
+              </div>
+              <hr>
+              @endif
+              
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">Alamat</p>

@@ -80,7 +80,7 @@ class AdminController extends Controller
     {   
         mitra::Where('id', $id)
             ->update(['status' => $request->status]);
-        return redirect('/a/mitra')->with('status', 'Berhasil mengubah status mitra!');
+        return redirect('/a/mitra')->with('status', 'Berhasil mengedit status mitra!');
     }
 
     /**
