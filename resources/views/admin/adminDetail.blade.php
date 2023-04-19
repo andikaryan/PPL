@@ -8,9 +8,9 @@
         <div class="col-lg-4 ">
           <div class="card mb-4" >
             <div class="card-body text-center">
-              @if ($mitra->image)
+              @if ($investor->image)
                   
-              <img src="{{ asset('storage/' . $mitra->image) }}" alt="avatar"
+              <img src="{{ asset('storage/' . $investor->image) }}" alt="avatar"
               class="rounded-circle img-fluid" style="width: 150px; height:150px">
               @else
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"

@@ -12,9 +12,7 @@
   <section id="gallery">
     <div class="container">
       <div class="row">
-        @if(is_null($blog))
-            <h1>Belum ada blog</h1>
-        @else
+        @if(count($blog)>0)
         @foreach ($blog as $item)
         <div class="col-lg-4 mb-4">
             <div class="card">
@@ -32,7 +30,10 @@
               </div>
              </div>
             </div>
-        @endforeach
+            @endforeach
+          @else
+    <div class="position-absolute top-50 start-50"><h3 class="text-muted">Belum ada Blog</h3></div>
+       
         @endif
         
 
