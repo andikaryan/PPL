@@ -22,7 +22,7 @@
           <th scope="col">nama</th>
           <th scope="col">No Hp</th>
           <th scope="col">status</th>
-          <th scope="col" style="width: 110px" >Action</th>
+          <th scope="col" style="width: 110px" >Detail</th>
       
         </tr>
       </thead>
@@ -35,7 +35,7 @@
           <td>{{ $user->status }}</td>
           <td>
             <a href="/a/mitra/{{ $user->id }}" class="badge bg-info"><span data-feather="eye"></span></a> 
-            <a href="/a/mitra/{{ $user->id }}/edit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="badge bg-warning"><span data-feather="edit-2"></span></a> 
+            {{-- <a href="/a/mitra/{{ $user->id }}/edit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="badge bg-warning"><span data-feather="edit-2"></span></a>  --}}
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -100,7 +100,7 @@
           <th scope="col">nama</th>
           <th scope="col">email</th>
           <th scope="col">status</th>
-          <th scope="col" style="width: 110px" >Action</th>
+          <th scope="col" style="width: 110px" >Detail</th>
           
         </tr>
       </thead>
@@ -113,8 +113,8 @@
           <td>{{ $user->status }}</td>
           <td>
             <a href="/a/mitra/{{ $user->id }}" class="badge bg-info"><span data-feather="eye"></span></a> 
-            <a href="/a/mitra/{{ $user->id }}/edit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="badge bg-warning"><span data-feather="edit-2"></span></a> 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            {{-- <a href="/a/mitra/{{ $user->id }}/edit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="badge bg-warning"><span data-feather="edit-2"></span></a>  --}}
+            <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">

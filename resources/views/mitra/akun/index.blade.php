@@ -195,7 +195,7 @@
                                 @else
                                 <img class="img-preview img-fluid mb-3 col-sm-5" alt="">
                                 @endif
-                                <input class="form-control @error('fotoKTP') is-invalid @enderror" type="file" id="image" name="fotoKTP" onchange="previewImage()">
+                                <input class="form-control @error('fotoKTP') is-invalid @enderror" type="file" id="image" name="fotoKTP" required onchange="previewImage()">
                                 @error('fotoKTP')
                                 <div class="invalid-feedback">
                                   {{ $message }}

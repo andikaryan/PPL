@@ -1,5 +1,14 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
     <div class="position-sticky pt-3 sidebar-sticky">
+      <ul class="nav flex-column mb-5">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> <span>Auth</span></h6>
+        <li class="nav-item">
+          <form action="/logout" method="post">
+            @csrf
+            <button type="submit" class="nav-link px-3"><span data-feather="log-out"> </span> Keluar</button>
+          </form> 
+        </li>  
+      </ul>
     @can('mitra')
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> <span>Mitra</span></h6>
       <ul class="nav flex-column">
@@ -19,6 +28,12 @@
           <a class="nav-link {{ Request::is('m/blog*') ? 'active' : '' }}" href="/m/blog">
             <span data-feather="file-text" class="align-text-bottom"></span>
             Blog
+          </a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('m/proyek*') ? 'active' : '' }}" href="/m/proyek">
+            <span data-feather="clipboard" class="align-text-bottom"></span>
+            Proyek Investasi
           </a>
         </li>  
       </ul>
@@ -58,9 +73,15 @@
           </a>
         </li> 
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('a/blog') ? 'active' : '' }}" aria-current="page" href="/a/blog">
+          <a class="nav-link {{ Request::is('a/blog*') ? 'active' : '' }}" aria-current="page" href="/a/blog">
             <span data-feather="file-text" class="align-text-bottom"></span>
             Blog
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('a/proyek*') ? 'active' : '' }}" aria-current="page" href="/a/proyek">
+            <span data-feather="clipboard" class="align-text-bottom"></span>
+          Proyek Investasi
           </a>
         </li>
       </ul>
@@ -90,15 +111,7 @@
       </ul>
       @endcan
 
-      <ul class="nav flex-column fixed-bottom mb-5">
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> <span>Auth</span></h6>
-        <li class="nav-item">
-          <form action="/logout" method="post">
-            @csrf
-            <button type="submit" class="nav-link px-3"><span data-feather="log-out"> </span> Keluar</button>
-          </form> 
-        </li>  
-      </ul>
+      
    
     </div>
   </nav>
