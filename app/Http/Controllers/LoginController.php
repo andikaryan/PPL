@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function loginMitra(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required | email:dns',
+            'email' => 'required | email',
             'password'  => 'required | min:5 | max:255'
         ]);
         try {

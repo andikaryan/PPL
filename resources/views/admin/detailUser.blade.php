@@ -19,7 +19,9 @@
               @endif
               <h5 class="my-3">{{ $mitra->nama_usaha }}</h5>
               <p class="text-muted mb-3">{{ $mitra->user->email }}</p>
-              <a href="" type="button" class="btn btn-primary mb-4" >{{ $mitra->status }}</a>
+              {{-- <a href="" type="button" class="btn btn-primary mb-4" >{{ $mitra->status }}</a> --}}
+              <a href="/a/mitra/{{ $mitra->id }}/edit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary mb-4">{{ $mitra->status }}</a> 
+              
             </div>
           </div>
         </div>
@@ -171,6 +173,45 @@
        
       </div>
       
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Status Mitra</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row justify-content-center">
+            <form method="post" action="/a/mitra/{{$mitra->id}}">
+              @method('put')
+              @csrf
+              <div class="mb-3">
+                {{-- <label for="status" class="form-label">Status</label> --}}
+                <select class="form-select" name="status">  
+                  @if (old('status', $mitra->status) == 'active')
+                  <option value="{{ $mitra->status }}">Active</option>
+                  <option value="pending">Pending</option>
+                  @else
+                  <option value="{{ $mitra->status }}">Pending</option>
+                  <option value="active">Active</option> 
+                  @endif
+                </select>
+                @error('judul')
+                <div class="invalid-feedback">
+                  {{ $message }}
+                </div>
+                @enderror
+              </div>
+             
+                <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+             
+            </form>
+          </div>
+          </div>
+          
+        </div>
+      </div>
     </div>
   </section>
 @endsection()

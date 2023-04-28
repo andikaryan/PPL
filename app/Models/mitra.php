@@ -18,6 +18,10 @@ class mitra extends Authenticatable
     {
         return $this->hasMany(blog::class);
     }
+    public function proyek()
+    {
+        return $this->hasMany(proyek::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');

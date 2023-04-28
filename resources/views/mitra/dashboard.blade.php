@@ -3,7 +3,7 @@
 @section('container')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   @if(auth()->user()->role === 'mitra')
-  <h1 class="h2">Selamat datang, {{ $nama->nama_usaha }} dashboard</h1>
+  <h1 class="h2">Selamat datang, {{ $nama->nama_usaha }}</h1>
   @elseif(auth()->user()->role === 'investor')
   <h1 class="h2">Selamat datang, {{ $head->name }}</h1>
   @else
