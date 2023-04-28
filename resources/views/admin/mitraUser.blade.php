@@ -97,9 +97,9 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">nama</th>
-          <th scope="col">email</th>
-          <th scope="col">status</th>
+          <th scope="col">Nama</th>
+          <th scope="col">No HP</th>
+          <th scope="col">Status</th>
           <th scope="col" style="width: 110px" >Detail</th>
           
         </tr>

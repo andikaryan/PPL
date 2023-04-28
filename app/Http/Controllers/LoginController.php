@@ -12,7 +12,7 @@ class LoginController extends Controller
 {
     public function mitra()
     {
-        return view('login.mitra', [
+        return view('login.login', [
             'title' => 'login mitra'
         ]);
     }
