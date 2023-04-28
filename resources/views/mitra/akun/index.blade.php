@@ -2,13 +2,14 @@
 
 @section('container')
 <section>
-  @if(session()->has('success'))
+  
+    <div class="container py-5">
+        <a href="/m/akun/{{ $mitra->id }}/edit" class="btn btn-warning me-2 mb-3"><span data-feather="edit-2"> </span> Ubah Akun</a>  
+        @if(session()->has('success'))
 <div class="alert alert-success col-lg-9" role="alert">
   {{ session('success') }}
 </div>
 @endif
-    <div class="container py-5">
-        <a href="/m/akun/{{ $mitra->id }}/edit" class="btn btn-warning me-2 mb-3"><span data-feather="edit-2"> </span> Edit</a>  
       <div class="row">
         <div class="col-lg-4 ">
           <div class="card mb-4" >

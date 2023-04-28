@@ -112,10 +112,10 @@ class MitraAkunController extends Controller
             'image' => 'image|file|max:5024',
             'no_hp' => 'min:11 | max:13 | required',
             'nama_usaha' => 'required | max:255',
-            'province_id' => 'required',
-            'regency_id' => 'required',
-            'district_id' => 'required',
-            'village_id' => 'required',
+            // 'province_id' => 'required',
+            // 'regency_id' => 'required',
+            // 'district_id' => 'required',
+            // 'village_id' => 'required',
             'alamat' => 'min:2',
             'norek' =>'required | min:5'
         ]);
@@ -129,7 +129,13 @@ class MitraAkunController extends Controller
         if($request->file('image')){
             $validated['image'] = $request->file('image')->store('post-image');
         }
-
+        if($request->regency_id){
+            $validated['province_id'] = $request->province_id;
+            $validated['regency_id'] = $request->regency_id;
+            $validated['disctrict_id'] = $request->disctrict_id;
+            $validated['village_id'] = $request->village_id;
+        }
+        // return $validated;
         mitra::where('id',$id)
         ->update($validated);;
 

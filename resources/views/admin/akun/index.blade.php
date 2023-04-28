@@ -8,6 +8,7 @@
   {{ session('success') }}
 </div>
 @endif
+        {{-- <a href="/a/investor" class="btn btn-danger me-2 mb-3"> <span data-feather="arrow-left"></span> Kembali</a> --}}
         <a href="/a/akun/{{ $user->id }}/edit" class="btn btn-warning me-2 mb-3"><span data-feather="edit-2"> </span> Ubah</a>  
       <div class="row">
         {{-- <div class="col-lg-4 ">

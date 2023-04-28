@@ -52,7 +52,7 @@
       <p class="text-danger">{{ $message }}</p>
       @enderror
     </div>
-    <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+    <button type="submit" class="btn btn-primary mb-3">Edit</button>
     <a href="/m/blog" class="btn btn-danger mb-3">Kembali</a>
   </form>
 </div>
