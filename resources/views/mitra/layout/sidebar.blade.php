@@ -108,6 +108,12 @@
             Blog
           </a>
         </li>  
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('i/proyek*') ? 'active' : '' }}" href="/i/proyek">
+            <span data-feather="clipboard" class="align-text-bottom"></span>
+            Proyek Investor
+          </a>
+        </li>  
       </ul>
       @endcan
 
