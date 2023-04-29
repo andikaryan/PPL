@@ -5,7 +5,7 @@
     <div class="row my-3">
         <div class="col-lg-8">
             <h2 class="mb-1">{{ $blog->judul }}</h2>
-            <a href="/m/blog/" class="btn btn-default me-2 mb-5"> {{ $blog->mitra->nama_usaha }}</a>  <br>
+            <a href="/i/profil/{{ $blog->user_id }}" class="btn btn-default me-2 mb-5"> {{ $blog->mitra->nama_usaha }}</a>  <br>
             <a href="/i/blog/" class="btn btn-info me-2"> <span data-feather="arrow-left"></span> Kembali</a>  
             {{-- <form action="/m/blog/{{ $blog->slug }}" method="blog" class="d-inline">
                 @method('delete')

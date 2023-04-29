@@ -9,6 +9,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InvestorAkunController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\InvestorKtpController;
+use App\Http\Controllers\InvestorProfilController;
 use App\Http\Controllers\InvestorProyekController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,7 @@ Route::resource('i/blog', BlogController::class)->middleware('investor');
 Route::resource('i/akun', InvestorAkunController::class)->middleware('investor');
 Route::resource('i/ktp', InvestorKtpController::class)->middleware('investor');
 Route::resource('i/proyek', InvestorProyekController::class)->middleware('investor');
+Route::resource('i/profil', InvestorProfilController::class)->middleware('investor');
 
 // Admin
 Route::resource('/a/mitra',AdminController::class)->middleware('admin');

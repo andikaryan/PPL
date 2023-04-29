@@ -118,6 +118,7 @@ class MitraAkunController extends Controller
             // 'village_id' => 'required',
             'alamat' => 'min:2',
             'norek' =>'required | min:5'
+
         ]);
             if($request->file('image')){
                 if($request->oldImage){
@@ -132,9 +133,13 @@ class MitraAkunController extends Controller
         if($request->regency_id){
             $validated['province_id'] = $request->province_id;
             $validated['regency_id'] = $request->regency_id;
-            $validated['disctrict_id'] = $request->disctrict_id;
+            $validated['district_id'] = $request->district_id;
             $validated['village_id'] = $request->village_id;
         }
+        if($request->bio){
+            $validated['bio'] = $request->bio;
+        }
+
         // return $validated;
         mitra::where('id',$id)
         ->update($validated);;

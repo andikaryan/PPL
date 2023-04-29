@@ -44,6 +44,15 @@
       @enderror
     </div>
     <div class="mb-3">
+      <label for="bio" class="form-label">Bio</label>
+      <input type="text" class="form-control @error('bio') is-invalid @enderror" id="bio" name="bio" value="{{ old('bio',$mitra->bio) }}">
+      @error('bio')
+      <div class="invalid-feedback">
+        {{ $message }}
+      </div>
+      @enderror
+    </div>
+    <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email',$mitra->user->email) }}">
         @error('email')
