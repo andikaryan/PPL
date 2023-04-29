@@ -6,7 +6,9 @@
 </div>
 <div class="mb-3">
 <a href="/m/proyek" class="btn btn-info me-2"> <span data-feather="arrow-left"></span> Kembali</a>  
+@if ($proyek->status != 'rilis')
 <a href="/m/proyek/{{ $proyek->id }}/edit" class="btn btn-warning me-2"><span data-feather="edit-2"> </span> Edit</a> 
+@endif
 </div>
 <div class="col-lg-6" >
     <div class="card mb-4" >

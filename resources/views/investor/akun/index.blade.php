@@ -9,7 +9,7 @@
         {{ session('success') }}
       </div>
       @endif
-        <a href="/i/akun/{{ $investor->id }}/edit" class="btn btn-warning me-2 mb-3"><span data-feather="edit-2"> </span> Edit</a>  
+        <a href="/i/akun/{{ $investor->id }}/edit" class="btn btn-warning me-2 mb-3"><span data-feather="edit-2"> </span> Ubah Akun</a>  
       <div class="row">
         <div class="col-lg-4 ">
           <div class="card mb-4" >

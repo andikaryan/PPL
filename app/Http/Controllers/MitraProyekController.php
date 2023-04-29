@@ -86,7 +86,11 @@ class MitraProyekController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proyek = proyek::where('id', $id)->first();
+        return view('mitra.proyek.edit', [
+            'proyek' => $proyek,
+            'title' => $proyek->nama_proyek,
+        ]);
     }
 
     /**
@@ -98,7 +102,19 @@ class MitraProyekController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_proyek' => 'required|max:255',
+            'nominal' => 'required|numeric',
+            'deskripsi' => 'required',
+            'tgl_dibuka' => 'required|date',
+            'tgl_ditutup' => 'required|date',
+            'tgl_kembali' => 'required|date',
+        ]);
+        $validatedData['deskripsi'] = strip_tags($request->deskripsi);
+        proyek::Where('id', $id)
+            ->update($validatedData);;
+
+        return redirect('/m/proyek')->with('success', 'Berhasil mengedit proyek!');
     }
 
     /**
