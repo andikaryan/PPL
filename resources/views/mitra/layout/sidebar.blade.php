@@ -97,9 +97,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('i/akun') ? 'active' : '' }}" aria-current="page" href="/i/akun">
+          <a class="nav-link {{ Request::is('i/akun*') ? 'active' : '' }}" aria-current="page" href="/i/akun">
             <span data-feather="user" class="align-text-bottom"></span>
             Akun
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('i/profil*') ? 'active' : '' }}" aria-current="page" href="/i/profil">
+            <span data-feather="shopping-bag" class="align-text-bottom"></span>
+            Profil Mitra
           </a>
         </li>
         <li class="nav-item">

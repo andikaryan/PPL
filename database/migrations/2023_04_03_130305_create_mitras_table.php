@@ -42,6 +42,7 @@ class CreateMitrasTable extends Migration
             $table->text('alamat')->nullable();
             $table->string('norek')->nullable();
             $table->string('fotoKTP')->nullable();
+            $table->text('bio')->nullable();
             $table->enum('status', ['active', 'pending'])->default('pending');
             $table->timestamps();
         });
