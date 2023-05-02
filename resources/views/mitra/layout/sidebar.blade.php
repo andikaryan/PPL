@@ -118,7 +118,7 @@
         <li class="nav-item">
           <a class="nav-link {{ Request::is('i/profil*') ? 'active' : '' }}" aria-current="page" href="/i/profil">
             <span data-feather="shopping-bag" class="align-text-bottom"></span>
-            Profil Mitra
+            Mitra
           </a>
         </li>
         <li class="nav-item">
