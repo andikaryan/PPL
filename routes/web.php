@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAkunController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminInvestorController;
+use App\Http\Controllers\AdminProfilController;
 use App\Http\Controllers\AdminProyekController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InvestorAkunController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\MitraAkunController;
 use App\Http\Controllers\MitraBlogController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\MitraKtpController;
+use App\Http\Controllers\MitraProfilController;
 use App\Http\Controllers\MitraProyek;
 use App\Http\Controllers\MitraProyekController;
 use App\Http\Controllers\RegisterController;
@@ -52,12 +54,14 @@ Route::resource('/a/investor',AdminInvestorController::class)->middleware('admin
 Route::resource('/a/blog',AdminBlogController::class)->middleware('admin');
 Route::resource('/a/akun',AdminAkunController::class)->middleware('admin');
 Route::resource('/a/proyek',AdminProyekController::class)->middleware('admin');
+Route::resource('a/profil', AdminProfilController::class)->middleware('admin');
 
 // Mitra
 Route::resource('/m/blog', MitraBlogController::class)->middleware('mitra');
 Route::resource('/m/proyek', MitraProyekController::class)->middleware('mitra');
 Route::resource('/m/akun', MitraAkunController::class)->middleware('mitra');
 Route::resource('/m/ktp', MitraKtpController::class)->middleware('mitra');
+Route::resource('/m/profil', MitraProfilController::class)->middleware('mitra');
 Route::post('/getKabupaten', [MitraAkunController::class,'getKabupaten'])->middleware('mitra')->name('getKabupaten');
 
 
