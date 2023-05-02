@@ -47,7 +47,7 @@
                    </div>
                    <div class="button mt-2 d-flex flex-row align-items-center">
 
-                    <a href="/i/profil/{{ $mitra->id }}" class="btn btn-outline-success btn-sm w-100">Kunjungi</a>
+                    <a href="/i/profil/{{ $mitra->id }}" class="btn btn-outline-success btn-sm w-100">Lihat</a>
                     {{-- <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button>                     --}}
                    </div>
                 </div>                    

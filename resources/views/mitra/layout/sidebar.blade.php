@@ -27,7 +27,8 @@
         <li class="nav-item">
           <a class="nav-link {{ Request::is('m/profil*') ? 'active' : '' }}" aria-current="page" href="/m/profil">
             <span data-feather="shopping-bag" class="align-text-bottom"></span>
-            Profil Mitra
+            Profil
+
           </a>
         </li>
         <li class="nav-item">
@@ -129,7 +130,7 @@
         <li class="nav-item">
           <a class="nav-link {{ Request::is('i/proyek*') ? 'active' : '' }}" href="/i/proyek">
             <span data-feather="clipboard" class="align-text-bottom"></span>
-            Proyek Investor
+            Proyek Investasi
           </a>
         </li>  
       </ul>
