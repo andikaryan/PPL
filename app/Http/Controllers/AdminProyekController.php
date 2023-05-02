@@ -78,7 +78,7 @@ class AdminProyekController extends Controller
     {
         proyek::Where('id', $id)
         ->update(['status' => $request->status]);
-    return redirect('/a/proyek')->with('status', 'Berhasil mengedit status proyek!');
+    return redirect('/a/proyek')->with('success', 'Berhasil mengedit status proyek!');
     }
 
     /**
