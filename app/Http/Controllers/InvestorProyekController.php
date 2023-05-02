@@ -49,7 +49,11 @@ class InvestorProyekController extends Controller
      */
     public function show($id)
     {
-        //
+        $proyek = proyek::where('id', $id)->first();
+        return view('investor.proyek.show', [
+            'proyek' => $proyek,
+            'title' => $proyek->nama_proyek,
+        ]);
     }
 
     /**
