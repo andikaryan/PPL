@@ -12,6 +12,7 @@ use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\InvestorKtpController;
 use App\Http\Controllers\InvestorProfilController;
 use App\Http\Controllers\InvestorProyekController;
+use App\Http\Controllers\InvestorTransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -47,7 +48,9 @@ Route::resource('i/akun', InvestorAkunController::class)->middleware('investor')
 Route::resource('i/ktp', InvestorKtpController::class)->middleware('investor');
 Route::resource('i/proyek', InvestorProyekController::class)->middleware('investor');
 Route::resource('i/profil', InvestorProfilController::class)->middleware('investor');
-
+Route::resource('i/transaksi', InvestorTransaksiController::class)->middleware('investor');
+Route::get('/i/transaksi/create/{id}',[InvestorTransaksiController::class,'create']);
+// Route::post('/i/transaksi/{id}',[InvestorTransaksiController::class,'store']);
 // Admin
 Route::resource('/a/mitra',AdminController::class)->middleware('admin');
 Route::resource('/a/investor',AdminInvestorController::class)->middleware('admin');

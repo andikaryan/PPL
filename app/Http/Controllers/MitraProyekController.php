@@ -114,7 +114,7 @@ class MitraProyekController extends Controller
         proyek::Where('id', $id)
             ->update($validatedData);;
 
-        return redirect('/m/proyek')->with('success', 'Berhasil mengedit proyek!');
+        return redirect('/m/proyek')->with('success', 'Berhasil mengedit proyek investasi !');
     }
 
     /**

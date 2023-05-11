@@ -133,6 +133,12 @@
             Proyek Investasi
           </a>
         </li>  
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('i/transaksi*') ? 'active' : '' }}" href="/i/transaksi">
+            <span data-feather="clipboard" class="align-text-bottom"></span>
+            Transaksi
+          </a>
+        </li>  
       </ul>
       @endcan
 

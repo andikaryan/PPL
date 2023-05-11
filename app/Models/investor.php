@@ -51,4 +51,9 @@ class investor extends Model
     {
         return $this->belongsTo(Village::class,'village_id');
     }
+
+    public function transaksiInvestasi()
+    {
+        return $this->hasMany(transaksiInvestasi::class);
+    }
 }   

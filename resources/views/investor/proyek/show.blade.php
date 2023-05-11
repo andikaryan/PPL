@@ -6,7 +6,7 @@
 </div>
 <div class="mb-3">
 <a href="/i/proyek" class="btn btn-info me-2"> <span data-feather="arrow-left"></span> Kembali</a>  
-{{-- <a href="/i/proyek/{{ $proyek->id }}/edit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning me-2"><span data-feather="edit-2"> </span> Edit status</a>  --}}
+
 </div>
 <div class="col-lg-6" >
     <div class="card mb-4" >
@@ -74,6 +74,12 @@
             <p class="text-muted mb-0">{{ $proyek->status }}</p>
           </div>
         </div> --}}
+
+        <div class="row justify-content-center">
+          <div class="col-lg-3 mt-4">
+<a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success me-2"><span data-feather=""> </span> Investasi</a> 
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -82,45 +88,58 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Status Proyek Investasi</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Silakan Melakukan Transfer</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row justify-content-center">
-          <form method="post" action="/a/proyek/{{$proyek->id}}">
-            @method('put')
-            @csrf
-            <div class="mb-3">
-              {{-- <label for="status" class="form-label">Status</label> --}}
-              <select class="form-select" name="status">  
-                @if (old('status', $proyek->status) == 'rilis')
-                <option value="{{ $proyek->status }}">Rilis</option>
-                <option value="diproses">Diproses</option>
-                <option value="selesai">selesai</option> 
-                @elseif (old('status', $proyek->status) == 'selesai')
-                <option value="{{ $proyek->status }}">Selesai</option>
-                <option value="diproses">Diproses</option>
-                <option value="rilis">Rilis</option>                
-                @else
-                <option value="{{ $proyek->status }}">Diproses</option>
-                <option value="rilis">Rilis</option>
-                <option value="selesai">selesai</option> 
-                @endif
-              </select>
-              @error('judul')
-              <div class="invalid-feedback">
-                {{ $message }}
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    BRI
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>121212412123123</strong>
+                  </div>
+                </div>
               </div>
-              @enderror
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Mandiri
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>12313123123123131</strong> 
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    BCA
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <strong>2341341414</strong>
+                  </div>
+                </div>
+              </div>
             </div>
-           
-              <button type="submit" class="btn btn-primary mb-3">Simpan</button>
-           
-          </form>
         </div>
+        </div>
+        <div class="modal-footer">
+          <a href="/i/transaksi/create/{{ $proyek->id }}" class="btn btn-info me-2">  </span> Kirim Bukti Pembayaran</a>
         </div>
         
       </div>
     </div>
   </div>
+
+  
   @endsection()
