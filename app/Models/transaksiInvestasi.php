@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class proyek extends Model
+class transaksiInvestasi extends Model
 {
     use HasFactory;
-    protected $guarded =[
+
+    protected $guarded = [
         'id'
     ];
-    public function mitra()
+    public function investor()
     {
-        return $this->belongsTo(mitra::class,'user_id');
+        return $this->belongsTo(investor::class, 'user_id');
     }
-    public function detail()
+    public function detailTransaksi()
     {
         return $this->hasMany(detailTransaksi::class);
     }
