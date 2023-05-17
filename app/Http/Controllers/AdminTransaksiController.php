@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\proyek;
 use App\Models\detailTransaksi;
+use App\Models\transaksiInvestasi;
+use App\Models\User;
+use App\Models\investor;
+use App\Models\proyek;
+use Illuminate\Http\Request;
 
-class AdminProyekController extends Controller
+class AdminTransaksiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +18,9 @@ class AdminProyekController extends Controller
      */
     public function index()
     {
-        return view('admin.proyek.index', [
-            'title' => 'Proyek Saya',
-            'proyeks' => proyek::all()
+        return view('admin.transaksi.index', [
+            "title" => "Transaksi",
+            'details' => detailTransaksi::all(),
         ]);
     }
 
@@ -28,7 +31,7 @@ class AdminProyekController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -39,7 +42,7 @@ class AdminProyekController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -50,7 +53,7 @@ class AdminProyekController extends Controller
      */
     public function show($id)
     {
-        $proyek = proyek::where('id', $id)->first();
+        $transaksi =detailTransaksi::where('transaksi_id',$id)->first();
         $details = detailTransaksi::where('proyek_id',$id)->get();
         $sum = 0;
         foreach ($details as $detail){
@@ -59,14 +62,19 @@ class AdminProyekController extends Controller
             $sum += $temp;
             }
         }
-        $pengembalian = $sum * (130/100);
-        return view('admin.proyek.show', [
-            'proyek' => $proyek,
-            'title' => $proyek->nama_proyek,
-            'sum' => $sum,
-            'pengembalian' => $pengembalian
+        $dana =  $transaksi->transaksi->nominal;
+        $hitung = $dana/$sum *100;
+        $hasil = 20/100*$hitung;
+        $pengembalian = ($hasil/100*$sum)+$dana;
+
+        return view('admin.transaksi.show', [
+            "title" => "transaksi",
+            'detail' => $transaksi,
+            'pengembalian' =>$pengembalian
+            // 'investor' => investor::where('user_id', $user->id)->first(),
         ]);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -75,7 +83,7 @@ class AdminProyekController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -87,9 +95,9 @@ class AdminProyekController extends Controller
      */
     public function update(Request $request, $id)
     {
-        proyek::Where('id', $id)
+        detailTransaksi::Where('id', $id)
         ->update(['status' => $request->status]);
-    return redirect('/a/proyek')->with('success', 'Berhasil mengedit status proyek!');
+    return redirect('/a/transaksi')->with('success', 'Berhasil mengedit status transaksi!');
     }
 
     /**

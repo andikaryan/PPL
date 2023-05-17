@@ -84,7 +84,11 @@
           </div>
         </div>
         <hr>
-        
+        @if ($detail->status != 'dibayar')
+        <div class="d-flex justify-content-center">
+          <a href="/i/transaksi/{{ $detail->transaksi->id }}/edit" class="btn btn-warning me-2"> Edit</a>  
+        </div>
+        @endif
       </div>
     </div>
   </div>

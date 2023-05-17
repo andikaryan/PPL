@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pengembalian;
 use Illuminate\Http\Request;
-use App\Models\proyek;
-use App\Models\detailTransaksi;
 
-class AdminProyekController extends Controller
+class MitraPengembalianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,7 @@ class AdminProyekController extends Controller
      */
     public function index()
     {
-        return view('admin.proyek.index', [
-            'title' => 'Proyek Saya',
-            'proyeks' => proyek::all()
-        ]);
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class AdminProyekController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -39,7 +35,17 @@ class AdminProyekController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'image' => 'required|image',
+        ]);
         
+        pengembalian::create([
+            'proyek_id' => $request->proyek_id,
+            'nominal' => $request->nominal,
+            'image' => $request->file('image')->store('post-image')
+        ]);
+
+        return redirect('/m/proyek')->with('success', 'Berhasil membayar pengembalian dana!');
     }
 
     /**
@@ -50,23 +56,9 @@ class AdminProyekController extends Controller
      */
     public function show($id)
     {
-        $proyek = proyek::where('id', $id)->first();
-        $details = detailTransaksi::where('proyek_id',$id)->get();
-        $sum = 0;
-        foreach ($details as $detail){
-            if ($detail->status == 'dibayar'){
-            $temp = $detail->transaksi->nominal;
-            $sum += $temp;
-            }
-        }
-        $pengembalian = $sum * (130/100);
-        return view('admin.proyek.show', [
-            'proyek' => $proyek,
-            'title' => $proyek->nama_proyek,
-            'sum' => $sum,
-            'pengembalian' => $pengembalian
-        ]);
+        //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,9 +79,7 @@ class AdminProyekController extends Controller
      */
     public function update(Request $request, $id)
     {
-        proyek::Where('id', $id)
-        ->update(['status' => $request->status]);
-    return redirect('/a/proyek')->with('success', 'Berhasil mengedit status proyek!');
+        //
     }
 
     /**

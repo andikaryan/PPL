@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\proyek;
 use App\Models\mitra;
+use App\Models\detailTransaksi;
+use App\Models\pengembalian;
 
 use Illuminate\Http\Request;
 
@@ -71,10 +73,25 @@ class MitraProyekController extends Controller
      */
     public function show($id)
     {
-        $proyek = proyek::where('id', $id)->first();
+        $proyek = proyek::where('id', $id)->first();    
+        $details = detailTransaksi::where('proyek_id',$id)->get();
+        $sum = 0;
+        foreach ($details as $detail){
+            if ($detail->status == 'dibayar'){
+            $temp = $detail->transaksi->nominal;
+            $sum += $temp;
+            }
+        }
+
+        $pengembalian = $sum * (130/100);
+        
+        // $sum = sum()
         return view('mitra.proyek.show', [
             'proyek' => $proyek,
             'title' => $proyek->nama_proyek,
+            'sum'   => $sum,
+            'pengembalian' => $pengembalian,
+            'status' => pengembalian::where('proyek_id',$id)->get()
         ]);
     }
 

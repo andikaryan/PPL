@@ -26,7 +26,25 @@
             <p class="mb-0">Nominal</p>
           </div>
           <div class="col-sm-9">
-            <p class="text-muted mb-0">{{ $proyek->nominal}}</p>
+            <p class="text-muted mb-0">Rp{{ $proyek->nominal}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Dana Masuk</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">Rp{{ $sum}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Dana Pengembalian</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">Rp{{ $pengembalian}}</p>
           </div>
         </div>
         <hr>

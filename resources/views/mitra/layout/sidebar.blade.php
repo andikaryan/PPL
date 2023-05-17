@@ -97,6 +97,12 @@
           Proyek Investasi
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('a/transaksi*') ? 'active' : '' }}" aria-current="page" href="/a/transaksi">
+            <span data-feather="file-plus" class="align-text-bottom"></span>
+          Transaksi Investasi
+          </a>
+        </li>
       </ul>
       @endcan
 
@@ -135,7 +141,7 @@
         </li>  
         <li class="nav-item">
           <a class="nav-link {{ Request::is('i/transaksi*') ? 'active' : '' }}" href="/i/transaksi">
-            <span data-feather="clipboard" class="align-text-bottom"></span>
+            <span data-feather="file-plus" class="align-text-bottom"></span>
             Transaksi
           </a>
         </li>  
