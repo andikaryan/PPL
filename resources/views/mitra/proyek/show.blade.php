@@ -28,7 +28,7 @@
             <p class="mb-0">Nominal</p>
           </div>
           <div class="col-sm-9">
-            <p class="text-muted mb-0">{{ $proyek->nominal}}</p>
+            <p class="text-muted mb-0">Rp{{ $proyek->nominal}}</p>
           </div>
         </div>
         <hr>
@@ -76,8 +76,72 @@
             <p class="text-muted mb-0">{{ $proyek->status }}</p>
           </div>
         </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Dana Masuk</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">Rp{{ $sum }}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Dana yang harus dikembalikan</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">Rp{{ $pengembalian }}</p>
+          </div>
+        </div>
+        @if (count($status)>0)
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-success me-2 mt-5"> Anda sudah Mengembalikan dana investasi</a>  
+        </div>
+        @else
+        <div class="d-flex justify-content-center">
+          <a href="/m/proyek/pengembalian/{{ $proyek->id }}" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success me-2 mt-5"> <span data-feather="arrow-right"></span> Kembalikan dana</a>  
+        </div>
+        @endif
+
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Kirim bukti Pembayaran</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row justify-content-center">
+          <form method="post" action="/m/proyek/pengembalian" enctype="multipart/form-data">
+            {{-- @method('put') --}}
+            @csrf
+            <div class="mb-3">
+              <p> Pastikan anda sudah transfer sejumlah Rp{{ $pengembalian }}!!</p>
+              <label for="image" class="form-label">Upload Gambar</label>
+              <img class="img-preview img-fluid mb-3 col-sm-5" alt="">
+              <input type="text" class="form-control" hidden id="nominal" name="nominal"  value="{{ $pengembalian }}">
+              <input type="text" class="form-control" hidden id="proyek_id" name="proyek_id"  value="{{ $proyek->id }}">
+              <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" required onchange="previewImage()">
+              @error('image')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+           
+              <button type="submit" class="btn btn-primary mb-3">Simpan</button>
+           
+          </form>
+        </div>
+        </div>
+        
       </div>
     </div>
   </div>
-
   @endsection()

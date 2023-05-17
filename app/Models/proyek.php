@@ -19,4 +19,8 @@ class proyek extends Model
     {
         return $this->hasMany(detailTransaksi::class);
     }
+    public function pengembalian()
+    {
+        return $this->hasMany(pengembalian::class);
+    }
 }

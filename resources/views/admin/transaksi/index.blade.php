@@ -13,7 +13,6 @@
     <div class="row">
         @if (count($details)>0)
         @foreach($details as $detail)
-        @if($detail->transaksi->user_id = $investor)
         <div class="col-md-4">
             <div class="card p-3 mb-2">
                 <div class="d-flex justify-content-between">
@@ -30,13 +29,13 @@
                     <div class="mt-5">
                         <div class="mt-3">{{ $detail->proyek->tgl_dibuka }} | {{ $detail->proyek->tgl_ditutup }}</div>
                         <div class="position-absolute bottom-0 end-0">
-                        <a href="/i/transaksi/{{ $detail->transaksi->id }}" class="btn btn-outline-success btn-sm m-2 me-3">Lihat</a>
+                        <a href="/a/transaksi/{{ $detail->transaksi->id }}" class="btn btn-outline-success btn-sm m-2 me-3">Lihat</a>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
-        @endif
+
         @endforeach
         @else
         <div class="position-absolute top-50 start-50"><h3 class="text-muted">Belum ada Transaksi Investasi</h3></div>

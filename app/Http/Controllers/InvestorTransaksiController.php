@@ -7,6 +7,7 @@ use App\Models\transaksiInvestasi;
 use App\Models\User;
 use App\Models\investor;
 use App\Models\proyek;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -48,13 +49,13 @@ class InvestorTransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
         $user = User::find(auth()->user()->id);
         $investor = investor::where('user_id', $user->id)->first();
-        $proyek = proyek::where('id',$id)->first();
+        // $proyek = proyek::where('id',$id)->first();
         $transaksi = $request->validate([
-            'nominal' => 'required|numeric|min:1000000|max:'.$proyek->nominal,
+            'nominal' => 'required|numeric|min:1000000',
             'image' => 'image'
         ]);
         $transaksi['image'] = $request->file('image')->store('post-image');
@@ -98,7 +99,11 @@ class InvestorTransaksiController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('investor.transaksi.edit', [
+            "title" => "Edit Transaksi",
+            'transaksi' => transaksiInvestasi::where('id', $id)->first()
+            // "id" => $id
+        ]);
     }
 
     /**
@@ -110,7 +115,24 @@ class InvestorTransaksiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $edit = [
+            'nominal' => 'required|numeric|min:1000000'
+        ];
+
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }}
+        $validatedData = $request->validate($edit);
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('post-image');
+        }
+        
+        transaksiInvestasi::Where('id', $id)
+            ->update($validatedData);;
+
+            return redirect('/i/transaksi')->with('success', 'Berhasil mengedit investasi!');
     }
 
     /**
@@ -124,3 +146,5 @@ class InvestorTransaksiController extends Controller
         //
     }
 }
+
+
