@@ -8,6 +8,7 @@
 <a href="/a/transaksi" class="btn btn-info me-2"> <span data-feather="arrow-left"></span> Kembali</a>  
 
 </div>
+<div class="d-flex ">
 <div class="col-lg-6" >
     <div class="card mb-4" >
       <div class="card-body">
@@ -84,6 +85,7 @@
             </div>
           </div> 
           <hr>
+          @if($detail->status == 'dibayar')
           <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Nominal Pengembalian</p>
@@ -93,6 +95,7 @@
               </div>
             </div> 
           <hr>
+          @endif
         <div class="row">
           <div class="col-sm-3">
             <p class="mb-0">Status</p>
@@ -110,7 +113,8 @@
       </div>
     </div>
   </div>
-
+  
+</div>
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -131,7 +135,7 @@
                 <option value="diproses">Diproses</option>
                 <option value="gagal">gagal</option> 
                 @elseif (old('status', $detail->status) == 'gagal')
-                <option value="{{ $detail->status }}">Selesai</option>
+                <option value="{{ $detail->status }}">Gagal</option>
                 <option value="diproses">Diproses</option>
                 <option value="dibayar">Dibayar</option>                
                 @else

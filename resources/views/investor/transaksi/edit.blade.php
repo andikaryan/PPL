@@ -39,7 +39,7 @@
         </div>
         @enderror
       </div>
-    <button type="submit" class="btn btn-primary mb-3">Edit</button>
+    <button type="submit" class="btn btn-primary mb-3">Simpan</button>
     <a href="/i/transaksi" class="btn btn-danger mb-3">Kembali</a>
   </form>
 </div>
