@@ -42,7 +42,8 @@ class MitraPengembalianController extends Controller
         pengembalian::create([
             'proyek_id' => $request->proyek_id,
             'nominal' => $request->nominal,
-            'image' => $request->file('image')->store('post-image')
+            'image' => $request->file('image')->store('post-image'),
+            'status' => 'diproses'
         ]);
 
         return redirect('/m/proyek')->with('success', 'Berhasil membayar pengembalian dana!');
@@ -79,7 +80,11 @@ class MitraPengembalianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        pengembalian::Where('id', $id)
+        ->update([
+            'image' => $request->file('image')->store('post-image'),
+        ]);
+        return redirect('/m/proyek')->with('success', 'Berhasil memperbarui pengembalian dana!');
     }
 
     /**

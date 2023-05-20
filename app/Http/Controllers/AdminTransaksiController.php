@@ -62,10 +62,13 @@ class AdminTransaksiController extends Controller
             $sum += $temp;
             }
         }
+        $pengembalian = 0;
+        if ($detail->status == 'dibayar'){
         $dana =  $transaksi->transaksi->nominal;
         $hitung = $dana/$sum *100;
         $hasil = 20/100*$hitung;
-        $pengembalian = ($hasil/100*$sum)+$dana;
+        $pengembalian += ($hasil/100*$sum)+$dana;
+        }
 
         return view('admin.transaksi.show', [
             "title" => "transaksi",

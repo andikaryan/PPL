@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\proyek;
-use App\Models\detailTransaksi;
 use App\Models\pengembalian;
+use Illuminate\Http\Request;
 
-class AdminProyekController extends Controller
+class AdminPengembalianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,7 @@ class AdminProyekController extends Controller
      */
     public function index()
     {
-        return view('admin.proyek.index', [
-            'title' => 'Proyek Saya',
-            'proyeks' => proyek::all()
-        ]);
+        //
     }
 
     /**
@@ -29,7 +24,7 @@ class AdminProyekController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -40,43 +35,27 @@ class AdminProyekController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\pengembalian  $pengembalian
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(pengembalian $pengembalian)
     {
-        $proyek = proyek::where('id', $id)->first();
-        $details = detailTransaksi::where('proyek_id',$id)->get();
-        
-        $sum = 0;
-        foreach ($details as $detail){
-            if ($detail->status == 'dibayar'){
-            $temp = $detail->transaksi->nominal;
-            $sum += $temp;
-            }
-        }
-        $pengembalian = $sum * (130/100);
-        return view('admin.proyek.show', [
-            'proyek' => $proyek,
-            'title' => $proyek->nama_proyek,
-            'sum' => $sum,
-            'pengembalian' => $pengembalian,
-            'kembali' => pengembalian::where('proyek_id',$id)->first()
-        ]);
+        //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\pengembalian  $pengembalian
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(pengembalian $pengembalian)
     {
         //
     }
@@ -85,26 +64,23 @@ class AdminProyekController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\pengembalian  $pengembalian
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        proyek::Where('id', $id)
+        pengembalian::Where('proyek_id', $id)
         ->update(['status' => $request->status]);
-
-        
-    
-    return redirect('/a/proyek')->with('success', 'Berhasil mengubah status proyek!');
+    return redirect('/a/proyek')->with('success', 'Berhasil mengubah status pengembalian!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\pengembalian  $pengembalian
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(pengembalian $pengembalian)
     {
         //
     }

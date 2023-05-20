@@ -84,6 +84,8 @@
           </div>
         </div>
         <hr>
+        <p>Bukti Pembayaran</p>
+        <img src="{{ asset('storage/' . $detail->transaksi->image) }}" class="img-fluid mb-3 mt-3 rounded">
         @if ($detail->status != 'dibayar')
         <div class="d-flex justify-content-center">
           <a href="/i/transaksi/{{ $detail->transaksi->id }}/edit" class="btn btn-warning me-2"> Edit</a>  

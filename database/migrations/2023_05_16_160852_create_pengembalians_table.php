@@ -18,6 +18,7 @@ class CreatePengembaliansTable extends Migration
             $table->foreignId('proyek_id')->references('id')->on('proyeks')->onDelete('cascade');
             $table->integer('nominal');
             $table->string('image');
+            $table->enum('status',['diproses','dibayar','gagal']);
             $table->timestamps();
         });
     }

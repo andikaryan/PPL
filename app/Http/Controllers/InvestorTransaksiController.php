@@ -36,10 +36,23 @@ class InvestorTransaksiController extends Controller
      */
     public function create($id)
     {
+        $proyek = proyek::where('id',$id)->first();
+        $details = detailTransaksi::where('proyek_id',$id)->get();
+
+        $sum = 0;
+        foreach ($details as $detail){
+            if ($detail->status == 'dibayar'){
+            $temp = $detail->transaksi->nominal;
+            $sum += $temp;
+            }
+        }
+
+        $max = $proyek->nominal - $sum ;
         return view('investor.transaksi.create', [
             "title" => "Buat Transaksi",
             // 'posts' => transaksiInvestasi::where('user_id', auth()->user()->id)->get()
-            "id" => $id
+            "id" => $id,
+            'max' => $max
         ]);
     }
 
@@ -53,9 +66,21 @@ class InvestorTransaksiController extends Controller
     {
         $user = User::find(auth()->user()->id);
         $investor = investor::where('user_id', $user->id)->first();
-        // $proyek = proyek::where('id',$id)->first();
+        $proyek = proyek::where('id',$request->proyek_id)->first();
+        $details = detailTransaksi::where('proyek_id',$request->proyek_id)->get();
+
+        $sum = 0;
+        foreach ($details as $detail){
+            if ($detail->status == 'dibayar'){
+            $temp = $detail->transaksi->nominal;
+            $sum += $temp;
+            }
+        }
+
+        $max = $proyek->nominal - $sum ;
+
         $transaksi = $request->validate([
-            'nominal' => 'required|numeric|min:1000000',
+            'nominal' => 'required|numeric|min:1000000|max:'.$max,
             'image' => 'image'
         ]);
         $transaksi['image'] = $request->file('image')->store('post-image');
@@ -65,11 +90,12 @@ class InvestorTransaksiController extends Controller
         $detail = [
             'transaksi_id' => $trans->id,
             'proyek_id'=> $request->proyek_id,
-            'status' => 'diproses'
+            'status' => 'diproses',
+            'max' => $max
         ];
         detailTransaksi::create($detail);
 
-        return redirect('/i/proyek')->with('success', 'Berhasil menambahkan transaksi!');
+        return redirect('/i/transaksi')->with('success', 'Berhasil menambahkan transaksi!');
 
     
     }
@@ -132,7 +158,7 @@ class InvestorTransaksiController extends Controller
         transaksiInvestasi::Where('id', $id)
             ->update($validatedData);;
 
-            return redirect('/i/transaksi')->with('success', 'Berhasil mengedit investasi!');
+            return redirect('/i/transaksi')->with('success', 'Berhasil mengedit data transaksi investasi!');
     }
 
     /**

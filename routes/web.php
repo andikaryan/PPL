@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAkunController;
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminInvestorController;
+use App\Http\Controllers\AdminPengembalianController;
 use App\Http\Controllers\AdminProfilController;
 use App\Http\Controllers\AdminProyekController;
 use App\Http\Controllers\AdminTransaksiController;
@@ -61,6 +62,7 @@ Route::resource('/a/akun',AdminAkunController::class)->middleware('admin');
 Route::resource('/a/proyek',AdminProyekController::class)->middleware('admin');
 Route::resource('a/profil', AdminProfilController::class)->middleware('admin');
 Route::resource('a/transaksi', AdminTransaksiController::class)->middleware('admin');
+Route::resource('a/pengembalian', AdminPengembalianController::class)->middleware('admin');
 
 // Mitra
 Route::resource('/m/blog', MitraBlogController::class)->middleware('mitra');

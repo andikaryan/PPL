@@ -17,7 +17,7 @@ class CreateDetailTransaksisTable extends Migration
             $table->id();
             $table->foreignId('transaksi_id')->references('id')->on('transaksi_investasis')->onDelete('cascade');
             $table->foreignId('proyek_id')->references('id')->on('proyeks')->onDelete('cascade');
-            $table->enum('status',['diproses','dibayar','gagal']);
+            $table->enum('status',['diproses','dibayar','gagal','selesai']);
             $table->timestamps();
         });
     }
