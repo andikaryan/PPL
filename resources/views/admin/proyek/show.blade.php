@@ -195,7 +195,7 @@
             @method('put')
             @csrf
             <div class="mb-3">
-              {{-- <label for="status" class="form-label">Status</label> --}}
+              @if ($kembali)
               <select class="form-select" name="status">  
                 @if (old('status', $kembali->status) == 'dibayar')
                 <option value="{{ $kembali->status }}">Dibayar</option>
@@ -211,6 +211,7 @@
                 <option value="gagal">gagal</option> 
                 @endif
               </select>
+              @endif
               @error('judul')
               <div class="invalid-feedback">
                 {{ $message }}
