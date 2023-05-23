@@ -50,6 +50,7 @@ Route::resource('i/blog', BlogController::class)->middleware('investor');
 Route::resource('i/akun', InvestorAkunController::class)->middleware('investor');
 Route::resource('i/ktp', InvestorKtpController::class)->middleware('investor');
 Route::resource('i/proyek', InvestorProyekController::class)->middleware('investor');
+// Route::post('i/nominal', [InvestorProyekController::class,'nominal'])->middleware('investor');
 Route::resource('i/profil', InvestorProfilController::class)->middleware('investor');
 Route::resource('i/transaksi', InvestorTransaksiController::class)->middleware('investor');
 Route::get('/i/transaksi/create/{id}',[InvestorTransaksiController::class,'create'])->middleware('investor');
