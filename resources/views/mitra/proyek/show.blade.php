@@ -171,6 +171,7 @@
         </div>
         <div class="modal-body">
           <div class="row justify-content-center">
+            @if ($status)
           <form method="post" action="/m/proyek/pengembalian/{{ $status->id }}" enctype="multipart/form-data">
             @method('put')
             @csrf
@@ -191,6 +192,7 @@
               <button type="submit" onclick="return confirm('Apakah data yang anda masukkan sudah benar ?')" class="btn btn-primary mb-3">Simpan</button>
            
           </form>
+          @endif
         </div>
         </div>
         
