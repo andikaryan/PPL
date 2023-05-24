@@ -183,7 +183,13 @@
               <div class="card mb-4 mb-md-0">
                 <div class="card-body">
                   <p class="mb-4"><h4>Foto KTP</h4></p>
+                  @if ($mitra->fotoKTP)
+                      
+                  <img src="{{ asset('storage/' . $mitra->fotoKTP) }}" class="img-fluid mt-3 rounded">
+                  @else
+                      
                   <a href="/m/ktp/{{ $mitra->id }}/edit" data-bs-toggle="modal" data-bs-target="#exampleModal" class="badge bg-warning"><span data-feather="edit-2"></span></a> 
+                  @endif
                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
@@ -223,7 +229,6 @@
                     </div>
                   </div>
                   
-                  <img src="{{ asset('storage/' . $mitra->fotoKTP) }}" class="img-fluid mt-3 rounded">
                 </div>
               </div>
             </div>
