@@ -15,7 +15,7 @@
       <div class="input-group mb-3 " >
       <span class="input-group-text">Rp</span>
       <div class="form-floating">
-      <input type="text" hidden class="form-control @error('nominal') is-invalid @enderror" id="nominal" name="nominal" required autofocus value="{{ $nominal }}">
+      <input type="text" class="form-control @error('nominal') is-invalid @enderror" id="nominal" name="nominal" required autofocus value="{{ old('nominal') }}">
     </div>
       </div>
       @error('nominal')
