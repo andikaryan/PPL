@@ -25,7 +25,7 @@
               @endif
               <h5 class="my-3">{{ $mitra->nama_usaha }}</h5>
               <p class="text-muted mb-3">{{ $mitra->user->email }}</p>
-              <a href="" type="button" class="btn btn-primary mb-4" >{{ $mitra->status }}</a>
+              <a type="button" class="btn btn-primary mb-4" >{{ $mitra->status }}</a>
             </div>
           </div>
         </div>
