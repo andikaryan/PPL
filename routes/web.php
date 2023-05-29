@@ -66,12 +66,12 @@ Route::resource('a/transaksi', AdminTransaksiController::class)->middleware('adm
 Route::resource('a/pengembalian', AdminPengembalianController::class)->middleware('admin');
 
 // Mitra
-Route::resource('/m/blog', MitraBlogController::class)->middleware('mitra');
-Route::resource('/m/proyek', MitraProyekController::class)->middleware('mitra');
-Route::resource('/m/proyek/pengembalian', MitraPengembalianController::class)->middleware('mitra'); 
+Route::resource('/m/blog', MitraBlogController::class)->middleware('mitraValid');
+Route::resource('/m/proyek', MitraProyekController::class)->middleware('mitraValid');
+Route::resource('/m/proyek/pengembalian', MitraPengembalianController::class)->middleware('mitraValid'); 
 Route::resource('/m/akun', MitraAkunController::class)->middleware('mitra');
 Route::resource('/m/ktp', MitraKtpController::class)->middleware('mitra');
-Route::resource('/m/profil', MitraProfilController::class)->middleware('mitra');
+Route::resource('/m/profil', MitraProfilController::class)->middleware('mitraValid');
 Route::post('/getKabupaten', [MitraAkunController::class,'getKabupaten'])->middleware('mitra')->name('getKabupaten');
 
 

@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'revalidate' => \App\Http\Middleware\RevalidateBackHistory::class,
         'admin' =>\App\Http\Middleware\isAdmin::class,
         'investor' =>\App\Http\Middleware\isInvestor::class,
-        'mitra' =>\App\Http\Middleware\isMitra::class
+        'mitra' =>\App\Http\Middleware\isMitra::class,
+        'mitraValid' =>\App\Http\Middleware\isMitraValid::class
     ];
 }

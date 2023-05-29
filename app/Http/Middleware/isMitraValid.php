@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\mitra;
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\mitra;
 
-class isMitra
+class isMitraValid
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,9 @@ class isMitra
      */
     public function handle(Request $request, Closure $next)
     {
-        
-        if(!auth()->check() || auth()->user()->role !== 'mitra'){
-            abort(403);
+        $user = mitra::where('user_id', auth()->user()->id)->first();
+        if(!auth()->check() || auth()->user()->role !== 'mitra' || $user->status === 'pending'){
+            return redirect()->intended('/m/dashboard')->with('alert', 'lengkapi profil dan tunggu sampai akunmu diverifikasi untuk mengakses fitur tersebut!');
         }
         return $next($request);
     }

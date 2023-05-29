@@ -9,14 +9,15 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
     {{-- trix --}}
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
-{{-- <meta name="csrf-token" content="{{ csrf_token() }}"/> --}}
-    
-
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"/> --}}
   <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
     
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
-
+    <!-- Favicon -->
+  <link rel="shortcut icon" href="/img/svg/logo.svg" type="image/x-icon">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="/css/style.min.css">
     @livewireStyles
     {{-- style --}}
     <style>
@@ -47,15 +48,310 @@
   
 
     
-@include('mitra.layout.header')
+{{-- @include('mitra.layout.header')
 
 <div class="container-fluid" >
   <div class="row" >
-    @include('mitra.layout.sidebar')
+    @include('mitra.layout.sidebar') --}}
+    
 
+    <div class="page-flex">
+      <!-- ! Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-start">
+            <div class="sidebar-head">
+                <a href="/" class="logo-wrapper" title="Home">
+                    {{-- <span class="sr-only">Home</span> --}}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAUAadOacAFiwn5-fZVAHVUwNGoECB_p-1QA&usqp=CAU" style="border-radius:30px" width="50px" class=" me-3" alt="">
+                    <div class="logo-text">
+                        <span class="logo-title">Grove</span>
+                        {{-- <span class="logo-subtitle">Dashboard</span> --}}
+                    </div>
+    
+                </a>
+                <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                    <span class="sr-only">Toggle menu</span>
+                    <span class="icon menu-toggle" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="sidebar-body">
+              @can('mitra')
+                <ul class="sidebar-body-menu">
+                  <span class="system-menu__title">Mitra</span>
+                    <li>
+                        <a class="{{ Request::is('m/dashboard') ? 'active' : '' }}" href="/m/dashboard"><span data-feather="home" class="me-3" area-hidden="true"></span> Dashboard</a>
+                    </li>
+                    <li>
+                      <a class=" {{ Request::is('m/akun') ? 'active' : '' }}" aria-current="page" href="/m/akun">
+                        <span data-feather="user" class="me-3"></span>
+                        Akun
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a class=" {{ Request::is('m/profil*') ? 'active' : '' }}" aria-current="page" href="/m/profil">
+                        <span data-feather="shopping-bag" class="me-3"></span>
+                        Profil
+            
+                      </a>
+                    </li>
+                    <li>
+                      <a class=" {{ Request::is('m/blog*') ? 'active' : '' }}" href="/m/blog">
+                        <span data-feather="file-text" class="me-3"></span>
+                        Blog
+                      </a>
+                    </li>  
+                    <li>
+                      <a class=" {{ Request::is('m/proyek*') ? 'active' : '' }}" href="/m/proyek">
+                        <span data-feather="clipboard" class="me-3"></span>
+                        Proyek Investasi
+                      </a>
+                    </li>     
+                </ul>
+                @endcan
+                @can('admin')      
+      <ul class="sidebar-body-menu">
+        <span class="system-menu__title">Admin</span>
+          <a class=" {{ Request::is('a/dashboard') ? 'active' : '' }}" aria-current="page" href="/a/dashboard">
+            <span data-feather="home" class="me-3"></span>
+            Dashboard
+          </a>
+        </li>
+        <li >
+          <a class=" {{ Request::is('a/akun*') ? 'active' : '' }}" aria-current="page" href="/a/akun">
+            <span data-feather="user" class="me-3"></span>
+            Akun
+          </a>
+        </li>
+        <li>
+          <a class="show-cat-btn" href="##">
+            <span data-feather="users" class="me-3"></span>Users
+              <span class="category__btn transparent-btn" title="Open list">
+                  <span class="sr-only">Open list</span>
+                  <span data-feather="chevron-down" aria-hidden="true"></span>
+              </span>
+          </a>
+          <ul class="cat-sub-menu">
+              <li>
+                <a class="{{ Request::is('a/mitra*') ? 'active' : '' }}" href="/a/mitra">
+                  <span data-feather="triangle" class="me-3"></span>
+                  Mitra
+                </a>
+              </li>
+              <li>
+                <a class="{{ Request::is('a/investor*') ? 'active' : '' }}" href="/a/investor">
+                  <span data-feather="underline" class="me-3"></span>
+                  Investor
+                </a>
+              </li>
+          </ul>
+      </li>
+        <li >
+          <a class=" {{ Request::is('a/blog*') ? 'active' : '' }}" aria-current="page" href="/a/blog">
+            <span data-feather="file-text" class="me-3"></span>
+            Blog
+          </a>
+        </li>
+        <li >
+          <a class=" {{ Request::is('a/proyek*') ? 'active' : '' }}" aria-current="page" href="/a/proyek">
+            <span data-feather="clipboard" class="me-3"></span>
+          Proyek Investasi
+          </a>
+        </li>
+        <li >
+          <a class=" {{ Request::is('a/transaksi*') ? 'active' : '' }}" aria-current="page" href="/a/transaksi">
+            <span data-feather="file-plus" class="me-3"></span>
+          Transaksi Investasi
+          </a>
+        </li>
+      </ul>
+      @endcan
+      @can('investor')
+      <ul class="sidebar-body-menu">
+        <span class="system-menu__title">Admin</span>
+        <li >
+          <a class="{{ Request::is('a/dashboard') ? 'active' : '' }}" aria-current="page" href="/i/dashboard">
+            <span data-feather="home" class="me-3"></span>
+            Dashboard
+          </a>
+        </li>
+        <li >
+          <a class="{{ Request::is('i/akun*') ? 'active' : '' }}" aria-current="page" href="/i/akun">
+            <span data-feather="user" class="me-3"></span>
+            Akun
+          </a>
+        </li>
+        <li >
+          <a class="{{ Request::is('i/profil*') ? 'active' : '' }}" aria-current="page" href="/i/profil">
+            <span data-feather="shopping-bag" class="me-3"></span>
+            Mitra
+          </a>
+        </li>
+        <li >
+          <a class="{{ Request::is('i/blog*') ? 'active' : '' }}" href="/i/blog">
+            <span data-feather="file-text" class="me-3"></span>
+            Blog
+          </a>
+        </li>  
+        <li >
+          <a class="{{ Request::is('i/proyek*') ? 'active' : '' }}" href="/i/proyek">
+            <span data-feather="clipboard" class="me-3"></span>
+            Proyek Investasi
+          </a>
+        </li>  
+        <li >
+          <a class="{{ Request::is('i/transaksi*') ? 'active' : '' }}" href="/i/transaksi">
+            <span data-feather="file-plus" class="me-3"></span>
+            Transaksi
+          </a>
+        </li>  
+      </ul>
+      @endcan
+         
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <a href="" class="sidebar-user">
+              <ul class="nav flex-column mb-5">
+                <span class="system-menu__title">Auth</span>
+                <li class="nav-item">
+                  <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="nav-link px-3"><span data-feather="log-out" class="me-3"> </span> Keluar</button>
+                  </form> 
+                </li>  
+              </ul>
+            </a>
+        </div>
+    </aside>
+      <div class="main-wrapper">
+        <!-- ! Main nav -->
+        <nav class="main-nav--bg">
+      <div class="container main-nav">
+        <div class="main-nav-start">
+          <div class="main-nav-start">
+            {{-- @if(auth()->user()->role === 'mitra')
+  <h5 class="h2">Selamat datang, {{ $nama->nama_usaha }}</h5>
+  @elseif(auth()->user()->role === 'investor')
+  <h5 class="h2">Selamat datang, {{ $head->name }}</h5>
+  @else
+  <h5 class="h2">Selamat datang, Admin</h5>
+  @endif --}}
+          </div>
+        </div>
+        <div class="main-nav-end">
+          <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+            <span class="sr-only">Toggle menu</span>
+            <span class="icon menu-toggle--gray" aria-hidden="true"></span>
+          </button>
+          <div class="">
+            
+          </div>
+          <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
+            <span class="sr-only">Switch theme</span>
+            <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+            <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+          </button>
+          <div class="notification-wrapper">
+            <button class="gray-circle-btn dropdown-btn" title="To messages" type="button">
+              <span class="sr-only">To messages</span>
+              <span class="icon notification active" aria-hidden="true"></span>
+            </button>
+            <ul class="users-item-dropdown notification-dropdown dropdown">
+              <li>
+                <a href="##">
+                  <div class="notification-dropdown-icon info">
+                    <i data-feather="check"></i>
+                  </div>
+                  <div class="notification-dropdown-text">
+                    <span class="notification-dropdown__title">System just updated</span>
+                    <span class="notification-dropdown__subtitle">The system has been successfully upgraded. Read more
+                      here.</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="notification-dropdown-icon danger">
+                    <i data-feather="info" aria-hidden="true"></i>
+                  </div>
+                  <div class="notification-dropdown-text">
+                    <span class="notification-dropdown__title">The cache is full!</span>
+                    <span class="notification-dropdown__subtitle">Unnecessary caches take up a lot of memory space and
+                      interfere ...</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="##">
+                  <div class="notification-dropdown-icon info">
+                    <i data-feather="check" aria-hidden="true"></i>
+                  </div>
+                  <div class="notification-dropdown-text">
+                    <span class="notification-dropdown__title">New Subscriber here!</span>
+                    <span class="notification-dropdown__subtitle">A new subscriber has subscribed.</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a class="link-to-page" href="##">Go to Notifications page</a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-user-wrapper">
+            <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
+              <span class="sr-only">My profile</span>
+              <span class="nav-user-img">
+              
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+
+              </span>
+            </button>
+            <ul class="users-item-dropdown nav-user-dropdown dropdown">
+              <li><a href="##">
+                  <i data-feather="user" aria-hidden="true"></i>
+                  <span>Profile</span>
+                </a></li>
+              <li><a href="##">
+                  <i data-feather="settings" aria-hidden="true"></i>
+                  <span>Account settings</span>
+                </a></li>
+              <li><a class="danger" href="##">
+                  <i data-feather="log-out" aria-hidden="true"></i>
+                  <span>Log out</span>
+                </a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       @yield('container')
     </main>
+
+        <footer class="footer">
+      <div class="container footer--flex">
+        <div class="footer-start">
+          <p>2023 © Grove - <a href="elegant-dashboard.com" target="_blank"
+              rel="noopener noreferrer">Kembangan Usahamu Disini    </a></p>
+        </div>
+        <ul class="footer-end">
+          <li><a href="##">About</a></li>
+          <li><a href="##">Support</a></li>
+          <li><a href="##">Puchase</a></li>
+        </ul>
+      </div>
+    </footer>
+      </div>
+    </div>
+    <!-- Chart library -->
+    <script src="./plugins/chart.min.js"></script>
+    <!-- Icons library -->
+    <script src="plugins/feather.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="js/script.js"></script>
+    
   </div>
 </div>
 
@@ -66,6 +362,7 @@
       <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous">
     </script>
     <script src="/js/dashboard.js"></script>
+    <script src="/js/script.js"></script>
     @livewireScripts
   </body>
 </html>

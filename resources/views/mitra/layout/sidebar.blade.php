@@ -79,12 +79,7 @@
             Investor
           </a>
         </li> 
-        {{-- <li class="nav-item">
-          <a class="nav-link {{ Request::is('a/profil*') ? 'active' : '' }}" aria-current="page" href="/a/profil">
-            <span data-feather="shopping-bag" class="align-text-bottom"></span>
-            Profil Mitra
-          </a>
-        </li> --}}
+
         <li class="nav-item">
           <a class="nav-link {{ Request::is('a/blog*') ? 'active' : '' }}" aria-current="page" href="/a/blog">
             <span data-feather="file-text" class="align-text-bottom"></span>
@@ -147,9 +142,6 @@
         </li>  
       </ul>
       @endcan
-
-      
-   
     </div>
   </nav>
 
