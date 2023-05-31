@@ -168,7 +168,7 @@
       @endcan
       @can('investor')
       <ul class="sidebar-body-menu">
-        <span class="system-menu__title">Admin</span>
+        <span class="system-menu__title">Investor</span>
         <li >
           <a class="{{ Request::is('a/dashboard') ? 'active' : '' }}" aria-current="page" href="/i/dashboard">
             <span data-feather="home" class="me-3"></span>
@@ -217,7 +217,7 @@
                 <li class="nav-item">
                   <form action="/logout" method="post">
                     @csrf
-                    <button type="submit" class="nav-link px-3"><span data-feather="log-out" class="me-3"> </span> Keluar</button>
+                    <button type="submit" class="nav-link px-3"><span data-feather="log-out" class="me-3" style="color:beige"> </span> Keluar</button>
                   </form> 
                 </li>  
               </ul>

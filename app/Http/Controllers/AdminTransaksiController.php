@@ -100,7 +100,7 @@ class AdminTransaksiController extends Controller
     {
         detailTransaksi::Where('id', $id)
         ->update(['status' => $request->status]);
-    return redirect('/a/transaksi')->with('success', 'Berhasil mengedit status transaksi!');
+    return redirect('/a/transaksi')->with('success', 'Berhasil mengedit status transaksi investasi!');
     }
 
     /**

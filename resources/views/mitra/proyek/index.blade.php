@@ -33,7 +33,7 @@
           <td>{{ $proyek->status   }}</td> 
           <td>
             <a href="/m/proyek/{{ $proyek->id }}" class="badge bg-info"><span data-feather="eye"></span></a> 
-            @if ($proyek->status != 'rilis')
+            @if ($proyek->status == 'diproses')
                 
             <a href="/m/proyek/{{ $proyek->id }}/edit" class="badge bg-warning"><span data-feather="edit-2"></span></a> 
             @endif

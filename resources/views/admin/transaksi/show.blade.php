@@ -108,7 +108,7 @@
         <p class="mb-0">Bukti Pembayaran</p>
         <img src="{{ asset('storage/' . $detail->transaksi->image) }}" class="img-fluid mb-3 mt-3 rounded">
         <div class="d-flex justify-content-center">
-            <a  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning me-2"><span data-feather="edit-2"> </span> Edit status</a> 
+            <a  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning me-2"><span data-feather="edit-2"> </span> Ubah status</a> 
         </div>
       </div>
     </div>
@@ -134,14 +134,22 @@
                 <option value="{{ $detail->status }}">Dibayar</option>
                 <option value="diproses">Diproses</option>
                 <option value="gagal">gagal</option> 
+                <option value="selesai">selesai</option> 
                 @elseif (old('status', $detail->status) == 'gagal')
                 <option value="{{ $detail->status }}">Gagal</option>
                 <option value="diproses">Diproses</option>
                 <option value="dibayar">Dibayar</option>                
+                <option value="selesai">selesai</option> 
+                @elseif (old('status', $detail->status) == 'selesai')
+                <option value="{{ $detail->status }}">selesai</option>
+                <option value="diproses">Diproses</option>
+                <option value="dibayar">Dibayar</option>                
+                <option value="gagal">gagal</option> 
                 @else
                 <option value="{{ $detail->status }}">Diproses</option>
                 <option value="dibayar">Dibayar</option>
                 <option value="gagal">gagal</option> 
+                <option value="selesai">selesai</option> 
                 @endif
               </select>
               @error('judul')
