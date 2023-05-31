@@ -26,7 +26,16 @@
             <p class="mb-0">Nominal</p>
           </div>
           <div class="col-sm-9">
-            <p class="text-muted mb-0">{{ $proyek->nominal}}</p>
+            <p class="text-muted mb-0">Rp{{ $proyek->nominal}}</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Dana Masuk</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0">Rp{{ $sum }} / Rp{{ $proyek->nominal}}</p>
           </div>
         </div>
         <hr>
@@ -93,6 +102,32 @@
         </div>
         <div class="modal-body">
           <div class="row justify-content-center">
+            <div class="card mb-3" style="width: 29rem;">
+              <div class="card-body">
+                <h5 class="card-title">Tata Cara Menambahkan Investasi</h5>
+                {{-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> --}}
+                <ul class="card-text mt-2">
+                  <li class="mb-2">
+                     Silakan transfer berdasarkan bank yang ingin dituju sejumlah yang diinginkan
+                  </li>
+                  <li class="mb-2">Pastikan anda memiliki bukti pembayaran.</li>
+                  <li class="mb-2">
+                    Klik tombol kirim bukti pembayaran
+                  </li>
+                  <li class="mb-2">
+                    Inputkan nominal sesuai dengan bukti pembayaran 
+                  </li>
+                  <li class="mb-2">
+                    Upload foto bukti Pembayaran
+                  </li>
+                  <li>
+                    Klik Simpan
+                  </li>
+                </ul>
+                {{-- <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a> --}}
+              </div>
+            </div>
             <div class="accordion" id="accordionExample">
               <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -102,7 +137,7 @@
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    <strong>121212412123123</strong>
+                    <strong>121212412123123 </strong>a/n Grove
                   </div>
                 </div>
               </div>
@@ -114,7 +149,7 @@
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    <strong>12313123123123131</strong> 
+                    <strong>12313123123123131 </strong> a/n Grove
                   </div>
                 </div>
               </div>
@@ -126,7 +161,7 @@
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    <strong>2341341414</strong>
+                    <strong>2341341414 </strong>a/n Grove
                   </div>
                 </div>
               </div>

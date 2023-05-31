@@ -60,10 +60,10 @@
         </div>
         <hr>
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-5">
             <p class="mb-0">Tanggal Dana Kembali</p>
           </div>
-          <div class="col-sm-9">
+          <div class="col-sm-7">
             <p class="text-muted mb-0">{{ $proyek->tgl_kembali }}</p>
           </div>
         </div>
@@ -94,6 +94,31 @@
             <p class="text-muted mb-0">Rp{{ $pengembalian }}</p>
           </div>
         </div>
+
+        <p class="mt-4"><h4>Investor</h4></p>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0 mt-3"><b>Nama Investor</b></p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0 mt-3"><b>Nominal Investasi</b></p>
+          </div>
+        </div>
+        <hr>
+        @foreach ($details as $detail)
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0 mt-3">{{ $detail->transaksi->investor->user->name }}</p>
+          </div>
+          <div class="col-sm-9">
+            <p class="text-muted mb-0 mt-3">Rp{{ $detail->transaksi->nominal }}</p>
+          </div>
+        </div>
+        <hr> 
+        @endforeach
+        
+
         @if($status)
         @if ($status->status == 'dibayar')
         <div class="d-flex justify-content-center">
@@ -138,8 +163,65 @@
             {{-- @method('put') --}}
             @csrf
             <div class="mb-3">
-              <p> Pastikan anda sudah transfer sejumlah Rp{{ $pengembalian }}!!</p>
-              <label for="image" class="form-label">Upload Gambar</label>
+              <div class="card mb-3" style="width: 29rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Tata Cara Pengembalian Dana</h5>
+                  {{-- <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> --}}
+                  <ul class="card-text mt-2">
+                    <li class="mb-2">
+                       Silakan transfer berdasarkan bank yang ingin dituju sejumlah <strong>Rp{{ $pengembalian }}</strong>
+                    </li>
+                    <li class="mb-2">Pastikan anda memiliki bukti pembayaran.</li>         
+                    <li class="mb-2">
+                      Upload foto bukti Pembayaran
+                    </li>
+                    <li>
+                      Klik Simpan
+                    </li>
+                  </ul>
+                  {{-- <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a> --}}
+                </div>
+              </div>    
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      BRI
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>121212412123123 </strong>a/n Grove
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Mandiri
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>12313123123123131 </strong> a/n Grove
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      BCA
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>2341341414 </strong>a/n Grove
+                    </div>
+                  </div>
+                </div>
+              </div>          
+              <label for="image" class="form-label mt-3">Upload Gambar</label>
               <img class="img-preview img-fluid mb-3 col-sm-5" alt="">
               <input type="text" class="form-control" hidden id="nominal" name="nominal"  value="{{ $pengembalian }}">
               <input type="text" class="form-control" hidden id="proyek_id" name="proyek_id"  value="{{ $proyek->id }}">
@@ -172,10 +254,11 @@
         <div class="modal-body">
           <div class="row justify-content-center">
             @if ($status)
+            
           <form method="post" action="/m/proyek/pengembalian/{{ $status->id }}" enctype="multipart/form-data">
             @method('put')
             @csrf
-            <div class="mb-3">
+            <div class="mb-3">              
               <p> Pastikan anda sudah transfer sejumlah Rp{{ $pengembalian }}!!</p>
               <label for="image" class="form-label">Upload Gambar</label>
               <img class="img-preview img-fluid mb-3 col-sm-5" alt="">

@@ -74,8 +74,7 @@ class MitraProyekController extends Controller
     public function show($id)
     {
         $proyek = proyek::where('id', $id)->first();    
-        $details = detailTransaksi::where('proyek_id',$id)->get();
-        
+        $details = detailTransaksi::where('proyek_id',$id)->get();        
         $sum = 0;
         foreach ($details as $detail){
             if ($detail->status == 'dibayar'){
@@ -92,6 +91,7 @@ class MitraProyekController extends Controller
             'title' => $proyek->nama_proyek,
             'sum'   => $sum,
             'pengembalian' => $pengembalian,
+            'details' => $details,
             'status' => pengembalian::where('proyek_id',$id)->first()
         ]);
     }
