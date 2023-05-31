@@ -80,7 +80,7 @@ class InvestorTransaksiController extends Controller
         $max = $proyek->nominal - $sum ;
 
         $transaksi = $request->validate([
-            'nominal' => 'required|numeric|min:1000000|max:'.$max,
+            'nominal' => 'required|numeric|min:100000|max:'.$max,
             'image' => 'image'
         ]);
         $transaksi['image'] = $request->file('image')->store('post-image');
@@ -143,7 +143,7 @@ class InvestorTransaksiController extends Controller
     {
         
         $edit = [
-            'nominal' => 'required|numeric|min:1000000'
+            'nominal' => 'required|numeric|min:100000'
         ];
 
         if($request->file('image')){

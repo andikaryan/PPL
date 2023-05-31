@@ -11,7 +11,7 @@
     @csrf
       <div class="mb-3">
         <label for="nominal" class="form-label">Nominal</label>
-        <small><p> Minimal Rp1.000.000</p></small>
+        <small><p> Minimal Rp100.000</p></small>
         <div class="input-group mb-3 " >
         <span class="input-group-text">Rp</span>
         <div class="form-floating">

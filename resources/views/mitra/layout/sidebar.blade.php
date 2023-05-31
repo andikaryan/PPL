@@ -102,7 +102,7 @@
       @endcan
 
       @can('investor')
-      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> <span>Investor</span></h6>
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"> <span>INVESTOR</span></h6>
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link {{ Request::is('a/dashboard') ? 'active' : '' }}" aria-current="page" href="/i/dashboard">

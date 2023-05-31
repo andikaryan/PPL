@@ -197,19 +197,20 @@
             <div class="mb-3">
               @if ($kembali)
               <select class="form-select" name="status">  
-                @if (old('status', $kembali->status) == 'dibayar')
-                <option value="{{ $kembali->status }}">Dibayar</option>
+                @if (old('status', $kembali->status) == 'berhasil')
+                <option value="{{ $kembali->status }}">berhasil</option>
                 <option value="diproses">Diproses</option>
                 <option value="gagal">gagal</option> 
                 @elseif (old('status', $kembali->status) == 'gagal')
                 <option value="{{ $kembali->status }}">Gagal</option>
                 <option value="diproses">Diproses</option>
-                <option value="dibayar">Dibayar</option>                
+                <option value="berhasil">berhasil</option>                
                 @else
                 <option value="{{ $kembali->status }}">Diproses</option>
-                <option value="dibayar">Dibayar</option>
+                <option value="berhasil">berhasil</option>
                 <option value="gagal">gagal</option> 
                 @endif
+                
               </select>
               @endif
               @error('judul')
