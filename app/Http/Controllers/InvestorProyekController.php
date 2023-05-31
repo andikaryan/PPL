@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\proyek;
+use App\Models\detailTransaksi;
 
 class InvestorProyekController extends Controller
 {
@@ -50,9 +51,19 @@ class InvestorProyekController extends Controller
     public function show($id)
     {
         $proyek = proyek::where('id', $id)->first();
+        $details = detailTransaksi::where('proyek_id',$id)->get();
+
+        $sum = 0;
+        foreach ($details as $detail){
+            if ($detail->status == 'dibayar'){
+            $temp = $detail->transaksi->nominal;
+            $sum += $temp;
+            }
+        }
         return view('investor.proyek.show', [
             'proyek' => $proyek,
             'title' => $proyek->nama_proyek,
+            'sum' => $sum
         ]);
     }
 
