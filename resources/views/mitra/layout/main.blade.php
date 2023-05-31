@@ -326,12 +326,13 @@
         </div>
       </div>
     </nav>
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    {{-- Main --}}
+    <main class="container">
       @yield('container')
     </main>
 
-        <footer class="footer">
-      <div class="container footer--flex">
+        {{-- <footer class="footer">
+      <div class="container footer-flex">
         <div class="footer-start">
           <p>2023 © Grove - <a href="elegant-dashboard.com" target="_blank"
               rel="noopener noreferrer">Kembangan Usahamu Disini    </a></p>
@@ -342,7 +343,7 @@
           <li><a href="##">Puchase</a></li>
         </ul>
       </div>
-    </footer>
+    </footer> --}}
       </div>
     </div>
     <!-- Chart library -->

@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Membuat Proyek Baru</h1>
 </div>
-<div class="col-lg-8">
+<div class="">
     <form method="post" action="/m/proyek">
       @csrf
       <div class="mb-3">
@@ -35,16 +35,16 @@
       </div>
       <div class="mb-3 ">
         <label for="tgl_dibuka" class="form-label">Tanggal Dibuka</label>
-        <input type="date" class="form-control @error('tgl_dibuka') is-invalid @enderror" id="tgl_dibuka" name="tgl_dibuka" required value="{{ old('tgl_dibuka') }}">
+        <input type="date" class="form-control" @error('tgl_dibuka') is-invalid @enderror id="tgl_dibuka" name="tgl_dibuka" required value="{{ old('tgl_dibuka') }}">
         @error('tgl_dibuka')
-        <div class="invalid-feedback">
-          {{ $message }}
-        </div>
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
         @enderror
-      </div>
+      </div>  
       <div class="mb-3 ">
         <label for="tgl_ditutup" class="form-label">Tanggal Ditutup</label>
-        <input type="date" class="form-control @error('tgl_ditutup') is-invalid @enderror" id="tgl_ditutup" name="tgl_ditutup" required value="{{ old('tgl_ditutup') }}">
+        <input type="date" class="form-control" @error('tgl_ditutup') is-invalid @enderror id="tgl_ditutup" name="tgl_ditutup" required value="{{ old('tgl_ditutup') }}">
         @error('tgl_ditutup')
         <div class="invalid-feedback">
           {{ $message }}
