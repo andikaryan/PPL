@@ -108,10 +108,10 @@ class InvestorAkunController extends Controller
             'image' => 'image|file|max:5024',
             'no_hp' => 'min:11 | max:13 | required',
            
-            'province_id' => 'required',
-            'regency_id' => 'required',
-            'district_id' => 'required',
-            'village_id' => 'required',
+            // 'province_id' => 'required',
+            // 'regency_id' => 'required',
+            // 'district_id' => 'required',
+            // 'village_id' => 'required',
             'alamat' => 'min:2',
             'norek' =>'required | min:5'
         ]);
@@ -120,6 +120,12 @@ class InvestorAkunController extends Controller
                     Storage::delete($request->oldImage);
                 }
                 
+            }
+            if($request->regency_id){
+                $validated['province_id'] = $request->province_id;
+                $validated['regency_id'] = $request->regency_id;
+                $validated['district_id'] = $request->district_id;
+                $validated['village_id'] = $request->village_id;
             }
         $validated = $request->validate($cek);
         if($request->file('image')){

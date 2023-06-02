@@ -4,6 +4,11 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <h1 class="h2">Proyek Investasi | {{ $proyek->nama_proyek }}</h1>
 </div>
+@if(session()->has('success'))
+  <div class="alert alert-success col-lg-9" role="alert">
+    {{ session('success') }}
+  </div>
+  @endif
 <div class="mb-3">
 <a href="/a/proyek" class="btn btn-info me-2"> <span data-feather="arrow-left"></span> Kembali</a>  
 
@@ -197,17 +202,17 @@
             <div class="mb-3">
               @if ($kembali)
               <select class="form-select" name="status">  
-                @if (old('status', $kembali->status) == 'berhasil')
-                <option value="{{ $kembali->status }}">berhasil</option>
+                @if (old('status', $kembali->status) == 'dibayar')
+                <option value="{{ $kembali->status }}">dibayar</option>
                 <option value="diproses">Diproses</option>
                 <option value="gagal">gagal</option> 
                 @elseif (old('status', $kembali->status) == 'gagal')
                 <option value="{{ $kembali->status }}">Gagal</option>
                 <option value="diproses">Diproses</option>
-                <option value="berhasil">berhasil</option>                
+                <option value="dibayar">dibayar</option>                
                 @else
                 <option value="{{ $kembali->status }}">Diproses</option>
-                <option value="berhasil">berhasil</option>
+                <option value="dibayar">dibayar</option>
                 <option value="gagal">gagal</option> 
                 @endif
                 

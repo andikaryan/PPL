@@ -130,8 +130,8 @@ class MitraBlogController extends Controller
                 Storage::delete($request->oldImage);
             }
             
-            $user = mitra::where('user_id', auth()->user()->id)->first();
         }
+        $user = mitra::where('user_id', auth()->user()->id)->first();
         if($request->file('image')){
         }
         $validatedData = $request->validate($rules);

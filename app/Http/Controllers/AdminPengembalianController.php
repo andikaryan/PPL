@@ -71,7 +71,7 @@ class AdminPengembalianController extends Controller
     {
         pengembalian::Where('proyek_id', $id)
         ->update(['status' => $request->status]);
-    return redirect('/a/proyek')->with('success', 'Berhasil mengubah status pengembalian!');
+    return redirect()->back()->with('success', 'Berhasil mengubah status pengembalian!');
     }
 
     /**
